@@ -20,6 +20,11 @@ Plugins/**/Intermediate/
 *.opendb
 *.sdf
 
+# --- Claude Code ---
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+
 # --- 기타 ---
 *.log
 Thumbs.db
