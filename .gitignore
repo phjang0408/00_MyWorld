@@ -1,0 +1,29 @@
+# --- Unreal 생성물 (언제든 재생성 가능) ---
+Binaries/
+Intermediate/
+DerivedDataCache/
+Saved/
+Build/
+Plugins/**/Binaries/
+Plugins/**/Intermediate/
+
+# --- IDE / 생성된 솔루션 (Generate Project Files로 재생성) ---
+.vs/
+.idea/
+.vscode/
+*.sln
+*.slnx
+*.suo
+*.user
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+
+# --- 기타 ---
+*.log
+Thumbs.db
+.DS_Store
+
+# --- 큰 원본 소스 에셋은 Content 밖(예: SourceArt/)에 두고 무시 ---
+SourceArt/

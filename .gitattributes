@@ -1,0 +1,12 @@
+# 텍스트 줄바꿈 통일
+* text=auto
+
+# 언리얼 바이너리 에셋: LFS 없이 일반 git, diff/merge 시도 안 함
+*.uasset binary
+*.umap binary
+*.png binary
+*.jpg binary
+*.tga binary
+*.fbx binary
+*.wav binary
+*.ogg binary
