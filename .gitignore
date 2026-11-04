@@ -1,4 +1,4 @@
-# --- Unreal 생성물 (언제든 재생성 가능) ---
+# --- Unreal 생성물---
 Binaries/
 Intermediate/
 DerivedDataCache/
@@ -25,5 +25,5 @@ Plugins/**/Intermediate/
 Thumbs.db
 .DS_Store
 
-# --- 큰 원본 소스 에셋은 Content 밖(예: SourceArt/)에 두고 무시 ---
+# --- 큰 원본 소스 에셋은 Content 밖(예: SourceArt/)에 두고 무시예정 ---
 SourceArt/
