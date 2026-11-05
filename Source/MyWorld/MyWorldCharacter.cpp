@@ -15,6 +15,9 @@ AMyWorldCharacter::AMyWorldCharacter()
 {
 	PrimaryActorTick.bCanEverTick = false;
 	GetCharacterMovement()->MaxWalkSpeed = 400.f;
+	GetCharacterMovement()->AirControl = 0.8f;
+	GetCharacterMovement()->BrakingDecelerationFalling = 1500.f;
+	GetCharacterMovement()->JumpZVelocity = 500.f;
 }
 
 void AMyWorldCharacter::BeginPlay()
