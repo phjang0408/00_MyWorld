@@ -26,4 +26,21 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+
+#pragma region Input
+private:
+	void InputMove(const FInputActionValue& InValue);
+
+	void InputLook(const FInputActionValue& InValue);
+
+	void InputJump(const FInputActionValue& InValue);
+
+	void InputRun(const FInputActionValue& InValue);
+
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess))
+	TObjectPtr<UMyInputConfig> PlayerCharacterInputConfig;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess))
+	TObjectPtr<UInputMappingContext> PlayerCharacterInputMappingContext;
 };

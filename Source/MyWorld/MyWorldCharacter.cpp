@@ -2,8 +2,14 @@
 
 
 #include "MyWorldCharacter.h"
+#include "Components/CapsuleComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
-// Sets default values
+#include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "MyInputConfig.h"
+#include "Kismet/KismetSystemLibrary.h"
+
 AMyWorldCharacter::AMyWorldCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -11,11 +17,20 @@ AMyWorldCharacter::AMyWorldCharacter()
 
 }
 
-// Called when the game starts or when spawned
 void AMyWorldCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	// IMC µî·Ï
+	APlayerController* MyWorldController = Cast<APlayerController>(GetController());
+	if (IsValid(MyWorldController) == true)
+	{
+		UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(MyWorldController->GetLocalPlayer());
+		if (IsValid(Subsystem) == true)
+		{
+			Subsystem->AddMappingContext(PlayerCharacterInputMappingContext, 0);
+		}
+	}
 }
 
 // Called every frame
@@ -30,5 +45,10 @@ void AMyWorldCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent);
+	if (IsValid(EnhancedInputComponent) == true)
+	{
+		// EnhancedInputComponent->BindAction(PlayerCharacterInputConfig->)
+	}
 }
 
