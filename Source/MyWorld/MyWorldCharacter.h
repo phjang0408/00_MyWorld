@@ -37,15 +37,19 @@ private:
 
 	void InputLook(const FInputActionValue& InValue);
 
-	void InputJump(const FInputActionValue& InValue);
-
 	void InputRun(const FInputActionValue& InValue);
 
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess))
 	TObjectPtr<UMyInputConfig> PlayerCharacterInputConfig;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess))
 	TObjectPtr<UInputMappingContext> PlayerCharacterInputMappingContext;
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	FVector2D AdjustLookVector = FVector2D(1.f, 1.f);
+
+	float WalkSpeed = 0.f;
+
 };
 #pragma endregion
