@@ -4,7 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "InputActionValue.h"
 #include "MyWorldCharacter.generated.h"
+
+class UMyInputConfig;
+class UInputMappingContext;
 
 UCLASS()
 class MYWORLD_API AMyWorldCharacter : public ACharacter
@@ -44,3 +48,4 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess))
 	TObjectPtr<UInputMappingContext> PlayerCharacterInputMappingContext;
 };
+#pragma endregion

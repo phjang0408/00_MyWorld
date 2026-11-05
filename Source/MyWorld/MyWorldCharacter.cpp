@@ -2,6 +2,7 @@
 
 
 #include "MyWorldCharacter.h"
+#include "MyGameModeBase.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
@@ -21,7 +22,7 @@ void AMyWorldCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	// IMC µî·Ï
+	// IMC Adding
 	APlayerController* MyWorldController = Cast<APlayerController>(GetController());
 	if (IsValid(MyWorldController) == true)
 	{
