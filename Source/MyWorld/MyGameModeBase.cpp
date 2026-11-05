@@ -13,3 +13,7 @@ void AMyGameModeBase::StartPlay()
 
 	UE_LOG(LogTemp, Warning, TEXT("HI!"));
 }
+
+AMyGameModeBase::AMyGameModeBase()
+{
+}

@@ -15,4 +15,6 @@ class MYWORLD_API AMyGameModeBase : public AGameModeBase
 	GENERATED_BODY()
 	
 	virtual void StartPlay() override;
+
+	AMyGameModeBase();
 };
