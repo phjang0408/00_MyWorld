@@ -5,6 +5,7 @@
 #include "MyGameModeBase.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Camera/CameraComponent.h"
 
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
@@ -21,6 +22,10 @@ AMyWorldCharacter::AMyWorldCharacter()
 	FVector PivotPosition(0.f, 0.f, -CharacterHalfHeight);
 	FRotator PivotRotator(0.f, -90.f, 0.f); // Pitch, Yaw, Roll -> X is front
 	GetMesh()->SetRelativeLocationAndRotation(PivotPosition, PivotRotator);
+
+	// Camera
+	//My_CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("My_Camera"));
+	//check(My_CameraComponent != nullptr);
 
 	PrimaryActorTick.bCanEverTick = false;
 	GetCharacterMovement()->MaxWalkSpeed = 400.f;
@@ -78,10 +83,13 @@ void AMyWorldCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 void AMyWorldCharacter::InputMove(const FInputActionValue& InValue)
 {
-	FVector2D MovementVector = InValue.Get<FVector2D>();
+	const FVector2D MovementVector = InValue.Get<FVector2D>();
+	const FRotator YawRotation(0.f, GetControlRotation().Yaw, 0.f);
+	const FVector Forward = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+	const FVector Right = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
-	AddMovementInput(GetActorForwardVector(), MovementVector.X);
-	AddMovementInput(GetActorRightVector(), MovementVector.Y);
+	AddMovementInput(Forward, MovementVector.X);
+	AddMovementInput(Right, MovementVector.Y);
 }
 
 void AMyWorldCharacter::InputLook(const FInputActionValue& InValue)

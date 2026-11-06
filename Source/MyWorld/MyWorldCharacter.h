@@ -38,8 +38,13 @@ protected:
 	TObjectPtr<USpringArmComponent> My_SpringArmComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera)
-	TObjectPtr<UCameraComponent> My_CamreaComponent;
+	TObjectPtr<UCameraComponent> My_CameraComponent;
+
+	UPROPERTY(EditAnywhere, Category = Camera)
+	FVector My_CameraOffset = FVector(2.8f, 6.0f, 0.0f);
+
 #pragma endregion
+
 #pragma region Input
 private:
 	void InputMove(const FInputActionValue& InValue);
