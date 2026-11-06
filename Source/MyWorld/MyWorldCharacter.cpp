@@ -13,11 +13,23 @@
 
 AMyWorldCharacter::AMyWorldCharacter()
 {
+	// 1. Capsule Size
+	float CharacterHalfHeight = 90.f;
+	float CharacterRadius = 40.f;
+	GetCapsuleComponent()->InitCapsuleSize(CharacterRadius, CharacterHalfHeight);
+
+	FVector PivotPosition(0.f, 0.f, -CharacterHalfHeight);
+	FRotator PivotRotator(0.f, -90.f, 0.f); // Pitch, Yaw, Roll -> X is front
+	GetMesh()->SetRelativeLocationAndRotation(PivotPosition, PivotRotator);
+
 	PrimaryActorTick.bCanEverTick = false;
 	GetCharacterMovement()->MaxWalkSpeed = 400.f;
 	GetCharacterMovement()->AirControl = 0.8f;
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.f;
 	GetCharacterMovement()->JumpZVelocity = 500.f;
+	
+	bUseControllerRotationYaw = false;
+	GetCharacterMovement()->bOrientRotationToMovement = true;
 }
 
 void AMyWorldCharacter::BeginPlay()

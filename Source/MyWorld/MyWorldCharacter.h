@@ -9,6 +9,8 @@
 
 class UMyInputConfig;
 class UInputMappingContext;
+class USpringArmComponent;
+class UCameraComponent;
 
 UCLASS()
 class MYWORLD_API AMyWorldCharacter : public ACharacter
@@ -30,7 +32,14 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+#pragma region Camera
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera)
+	TObjectPtr<USpringArmComponent> My_SpringArmComponent;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera)
+	TObjectPtr<UCameraComponent> My_CamreaComponent;
+#pragma endregion
 #pragma region Input
 private:
 	void InputMove(const FInputActionValue& InValue);
