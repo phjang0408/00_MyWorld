@@ -41,7 +41,7 @@ protected:
 	TObjectPtr<UCameraComponent> My_CameraComponent;
 
 	UPROPERTY(EditAnywhere, Category = Camera)
-	FVector My_CameraOffset = FVector(2.8f, 6.0f, 0.0f);
+	FVector My_CameraOffset = FVector(0.f,0.f,60.f);
 
 #pragma endregion
 

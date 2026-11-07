@@ -1,15 +1,16 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "MyWorldCharacter.h"
-#include "MyGameModeBase.h"
+#include "Character/MyWorldCharacter.h"
+#include "Game/MyGameModeBase.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "MyInputConfig.h"
+#include "Input/MyInputConfig.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 AMyWorldCharacter::AMyWorldCharacter()
@@ -24,8 +25,16 @@ AMyWorldCharacter::AMyWorldCharacter()
 	GetMesh()->SetRelativeLocationAndRotation(PivotPosition, PivotRotator);
 
 	// Camera
-	//My_CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("My_Camera"));
-	//check(My_CameraComponent != nullptr);
+	My_SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
+	check(My_SpringArmComponent != nullptr);
+	My_SpringArmComponent->bUsePawnControlRotation = true;	// SpringArm - Controller
+	My_SpringArmComponent->SetupAttachment(RootComponent);
+	My_SpringArmComponent->TargetArmLength = 300.f;
+	My_SpringArmComponent->SetRelativeLocation(My_CameraOffset);
+	
+	My_CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("My_Camera"));
+	check(My_CameraComponent != nullptr);
+	My_CameraComponent->SetupAttachment(My_SpringArmComponent);
 
 	PrimaryActorTick.bCanEverTick = false;
 	GetCharacterMovement()->MaxWalkSpeed = 400.f;
@@ -33,8 +42,8 @@ AMyWorldCharacter::AMyWorldCharacter()
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.f;
 	GetCharacterMovement()->JumpZVelocity = 500.f;
 	
-	bUseControllerRotationYaw = false;
-	GetCharacterMovement()->bOrientRotationToMovement = true;
+	bUseControllerRotationYaw = false; // Character - Controller
+	GetCharacterMovement()->bOrientRotationToMovement = true; // Character - 이동 방향
 }
 
 void AMyWorldCharacter::BeginPlay()
