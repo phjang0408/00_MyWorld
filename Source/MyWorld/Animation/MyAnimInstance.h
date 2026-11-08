@@ -14,4 +14,9 @@ class MYWORLD_API UMyAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
 	
+protected:
+	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
+
+protected:
+
 };
