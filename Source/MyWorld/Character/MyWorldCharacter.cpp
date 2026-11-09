@@ -36,6 +36,7 @@ AMyWorldCharacter::AMyWorldCharacter()
 	check(My_CameraComponent != nullptr);
 	My_CameraComponent->SetupAttachment(My_SpringArmComponent);
 
+	// features
 	PrimaryActorTick.bCanEverTick = false;
 	GetCharacterMovement()->MaxWalkSpeed = 400.f;
 	GetCharacterMovement()->AirControl = 0.8f;
@@ -44,6 +45,7 @@ AMyWorldCharacter::AMyWorldCharacter()
 	
 	bUseControllerRotationYaw = false; // Character - Controller
 	GetCharacterMovement()->bOrientRotationToMovement = true; // Character - 이동 방향
+	GetCharacterMovement()->RotationRate = FRotator(0.f, 720.f, 0.f); // Yaw 2배(0.25second)
 }
 
 void AMyWorldCharacter::BeginPlay()

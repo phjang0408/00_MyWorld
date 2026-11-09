@@ -19,7 +19,7 @@ void UMyAnimInstance::NativeUpdateAnimation(float deltaseconds)
 {
 	Super::NativeUpdateAnimation(deltaseconds);
 
-	if (IsValid(OwnerCharacter) != false || IsValid(OwnerCharacterMovementComponent) != false)
+	if (IsValid(OwnerCharacter) != false && IsValid(OwnerCharacterMovementComponent) != false)
 	{
 		Velocity = OwnerCharacterMovementComponent->Velocity;
 		GroundSpeed = Velocity.Size2D();	// Z 제외, XY 내적의 제곱근
