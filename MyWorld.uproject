@@ -22,8 +22,12 @@
 			]
 		},
 		{
-			"Name" : "EnhancedInput",
-			"Enabled" : true
+			"Name": "EnhancedInput",
+			"Enabled": true
+		},
+		{
+			"Name": "ModelContextProtocol",
+			"Enabled": true
 		}
 	]
 }

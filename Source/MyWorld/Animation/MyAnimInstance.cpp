@@ -28,4 +28,5 @@ void UMyAnimInstance::NativeUpdateAnimation(float deltaseconds)
 		bShouldMove = (GroundSpeed > 3.f) &&
 			(OwnerCharacterMovementComponent->GetCurrentAcceleration() != FVector::ZeroVector);
 	}
+	GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Blue, FString::Printf(TEXT("GroundSpeed : %.1f"), GroundSpeed));
 }
