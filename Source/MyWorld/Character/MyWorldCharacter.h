@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// MyWorldCharacter.h
 
 #pragma once
 
@@ -42,6 +42,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = Camera)
 	FVector My_CameraOffset = FVector(0.f,0.f,60.f);
+
+	FORCEINLINE USpringArmComponent* GetSpringArm() const { return My_SpringArmComponent; }
 
 #pragma endregion
 
