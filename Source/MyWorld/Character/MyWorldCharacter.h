@@ -55,6 +55,8 @@ private:
 
 	void InputRun(const FInputActionValue& InValue);
 
+	void InputAttack(const FInputActionValue& InValue);
+
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess))
 	TObjectPtr<UMyInputConfig> PlayerCharacterInputConfig;
@@ -67,5 +69,6 @@ protected:
 
 	float WalkSpeed = 0.f;
 
+	bool bIsAttacking = false;
 };
 #pragma endregion

@@ -89,6 +89,7 @@ void AMyWorldCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 		EnhancedInputComponent->BindAction(PlayerCharacterInputConfig->Jump, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 		EnhancedInputComponent->BindAction(PlayerCharacterInputConfig->Run, ETriggerEvent::Started, this, &ThisClass::InputRun);
 		EnhancedInputComponent->BindAction(PlayerCharacterInputConfig->Run, ETriggerEvent::Completed, this, &ThisClass::InputRun);
+		EnhancedInputComponent->BindAction(PlayerCharacterInputConfig->Attack, ETriggerEvent::Started, this, &ThisClass::InputAttack);
 	}
 }
 
@@ -122,5 +123,9 @@ void AMyWorldCharacter::InputRun(const FInputActionValue& InValue)
 	{
 		GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 	}
+}
+
+void AMyWorldCharacter::InputAttack(const FInputActionValue& InValue)
+{
 }
 
